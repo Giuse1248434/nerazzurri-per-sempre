@@ -41,4 +41,21 @@ const contents={coro:'<strong>È per la gente che ama soltanto te!</strong><br>Q
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-content').innerHTML=contents[btn.dataset.tab]}));
 document.getElementById('cheer').addEventListener('click',()=>{const b=document.getElementById('cheer');b.textContent=b.textContent.includes('Forza Inter')?'🖤💙 Sempre nerazzurri!':'Forza Inter! ⚫🔵'});
 const quiz=[{q:'In quale anno è nata l’Inter?',opts:['1908','1920','1899'],correct:'1908',why:'Esatto! L’Inter è nata a Milano il 9 marzo 1908.'},{q:'Quali sono i colori dell’Inter?',opts:['Rosso e giallo','Nero e azzurro','Verde e bianco'],correct:'Nero e azzurro',why:'Giusto! I colori nerazzurri sono il simbolo della squadra.'},{q:'Come si chiama lo stadio di casa dell’Inter?',opts:['Olimpico','San Siro','Maradona'],correct:'San Siro',why:'Esatto! San Siro si trova a Milano.'},{q:'In quale stagione l’Inter ha conquistato il Triplete?',opts:['2009/10','2015/16','1998/99'],correct:'2009/10',why:'Giusto! In quella stagione vinse campionato, Coppa Italia e Champions League.'}];let qi=0;function renderQuiz(){const q=quiz[qi];document.getElementById('quiz-question').textContent=q.q;document.getElementById('quiz-options').innerHTML=q.opts.map(o=>'<button class="tab" data-answer="'+o+'">'+o+'</button>').join('');document.getElementById('quiz-result').textContent='Seleziona una risposta per scoprire se è corretta.';document.querySelectorAll('#quiz-options button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#quiz-options button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('quiz-result').textContent=b.dataset.answer===q.correct?q.why:'Non proprio! La risposta corretta è: '+q.correct+'.';}));}renderQuiz();document.getElementById('next-question').addEventListener('click',()=>{qi=(qi+1)%quiz.length;renderQuiz();});
-</script></body></html>
+</script></body>
+<section id="classifica-serie-a" style="background:#101010;color:white;padding:20px;border-radius:12px;margin:20px 0;">
+  <h2 style="color:#00aaff;text-align:center;">🏆 Classifica Serie A</h2>
+  <p style="text-align:center;">Classifica aggiornata automaticamente</p>
+  <iframe
+    src="https://www.legaseriea.it/it/serie-a/classifica"
+    title="Classifica Serie A"
+    width="100%"
+    height="650"
+    style="border:0;background:white;border-radius:8px;">
+  </iframe>
+  <p style="text-align:center;">
+    <a href="https://www.legaseriea.it/it/serie-a/classifica" target="_blank" rel="noopener" style="color:#00aaff;">
+      Apri la classifica ufficiale
+    </a>
+  </p>
+</section>
+        </html>
