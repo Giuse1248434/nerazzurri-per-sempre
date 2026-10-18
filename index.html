@@ -41,4 +41,24 @@ const contents={coro:'<strong>È per la gente che ama soltanto te!</strong><br>Q
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-content').innerHTML=contents[btn.dataset.tab]}));
 document.getElementById('cheer').addEventListener('click',()=>{const b=document.getElementById('cheer');b.textContent=b.textContent.includes('Forza Inter')?'🖤💙 Sempre nerazzurri!':'Forza Inter! ⚫🔵'});
 const quiz=[{q:'In quale anno è nata l’Inter?',opts:['1908','1920','1899'],correct:'1908',why:'Esatto! L’Inter è nata a Milano il 9 marzo 1908.'},{q:'Quali sono i colori dell’Inter?',opts:['Rosso e giallo','Nero e azzurro','Verde e bianco'],correct:'Nero e azzurro',why:'Giusto! I colori nerazzurri sono il simbolo della squadra.'},{q:'Come si chiama lo stadio di casa dell’Inter?',opts:['Olimpico','San Siro','Maradona'],correct:'San Siro',why:'Esatto! San Siro si trova a Milano.'},{q:'In quale stagione l’Inter ha conquistato il Triplete?',opts:['2009/10','2015/16','1998/99'],correct:'2009/10',why:'Giusto! In quella stagione vinse campionato, Coppa Italia e Champions League.'}];let qi=0;function renderQuiz(){const q=quiz[qi];document.getElementById('quiz-question').textContent=q.q;document.getElementById('quiz-options').innerHTML=q.opts.map(o=>'<button class="tab" data-answer="'+o+'">'+o+'</button>').join('');document.getElementById('quiz-result').textContent='Seleziona una risposta per scoprire se è corretta.';document.querySelectorAll('#quiz-options button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#quiz-options button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('quiz-result').textContent=b.dataset.answer===q.correct?q.why:'Non proprio! La risposta corretta è: '+q.correct+'.';}));}renderQuiz();document.getElementById('next-question').addEventListener('click',()=>{qi=(qi+1)%quiz.length;renderQuiz();});
-</script></body></html>
+</script></body>
+  
+<section id="classifica" style="background:#07111f;color:white;padding:20px;border-radius:15px;font-family:Arial,sans-serif">
+  <h2 style="text-align:center;color:#00aaff">🏆 CLASSIFICA SERIE A</h2>
+  <table style="width:100%;border-collapse:collapse;text-align:left">
+    <thead style="background:#0754a5">
+      <tr><th>Pos.</th><th>Squadra</th><th>Punti</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:#063f83;font-weight:bold;color:#35b9ff"><td>1</td><td>Inter</td><td>19</td></tr>
+      <tr><td>2</td><td>Roma</td><td>17</td></tr>
+      <tr><td>3</td><td>Lazio</td><td>16</td></tr>
+      <tr><td>4</td><td>Frosinone</td><td>13</td></tr>
+      <tr><td>5</td><td>Cagliari</td><td>13</td></tr>
+      <tr><td>6</td><td>Milan</td><td>12</td></tr>
+    </tbody>
+  </table>
+  <p style="text-align:center;color:#9bbbd7">Forza Inter! 🖤💙</p>
+</section>
+       
+         </html>
