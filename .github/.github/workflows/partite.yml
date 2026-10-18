@@ -32,4 +32,4 @@ jobs:
           git diff --cached --quiet || (
             git commit -m "Aggiorna partite Inter"
             git push
-          )
+          )   
