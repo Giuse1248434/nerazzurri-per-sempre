@@ -1,0 +1,19 @@
+name: Aggiorna partite Inter
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scarica il sito
+        uses: actions/checkout@v4
+
+      - name: Aggiorna risultati
+        run: echo "Configurazione da completare"
