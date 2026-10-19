@@ -30,7 +30,50 @@
 <section class="section" id="club"><div class="section-head"><div><h2>Il mondo nerazzurro</h2><p class="sub">Tre cose che rendono speciale questa squadra.</p></div></div><div class="grid"><article class="card"><div class="symbol">🏟️</div><h3>San Siro</h3><p>Una casa leggendaria, dove il boato dei tifosi accompagna le notti più emozionanti.</p></article><article class="card"><div class="symbol">⚫🔵</div><h3>I colori</h3><p>Nero e azzurro: un'identità riconoscibile e una passione che attraversa le generazioni.</p></article><article class="card"><div class="symbol">🏆</div><h3>La storia</h3><p>Trofei, grandi campioni e momenti indimenticabili fanno parte della storia interista.</p></article></div></section>
 <section class="section" id="storia"><div class="section-head"><div><h2>Leggende nerazzurre</h2><p class="sub">Campioni che hanno lasciato il segno nella storia dell’Inter.</p></div></div><div class="grid"><article class="card"><div class="symbol">👑</div><h3>Javier Zanetti</h3><p>Il capitano simbolo di impegno, continuità e attaccamento alla maglia nerazzurra.</p></article><article class="card"><div class="symbol">🎯</div><h3>Diego Milito</h3><p>L’attaccante argentino protagonista della storica stagione del Triplete 2009/10.</p></article><article class="card"><div class="symbol">🧤</div><h3>Júlio César</h3><p>Portiere decisivo in tante grandi notti europee con la maglia dell’Inter.</p></article></div><div class="grid" style="margin-top:16px"><article class="card"><div class="symbol">📅</div><h3>1908 · La nascita</h3><p>L’Inter nasce a Milano il 9 marzo 1908, con l’idea di essere una squadra aperta a tutti.</p></article><article class="card"><div class="symbol">🌟</div><h3>2010 · Il Triplete</h3><p>Campionato, Coppa Italia e Champions League nella stessa stagione: un’impresa indimenticabile.</p></article><article class="card"><div class="symbol">🏟️</div><h3>San Siro</h3><p>Una delle grandi case del calcio italiano, teatro di derby e serate europee emozionanti.</p></article></div></section>
 <section class="section" id="quiz"><div class="section-head"><div><h2>Quiz nerazzurro ⚫🔵</h2><p class="sub">Quanto conosci la tua squadra? Scegli una risposta.</p></div></div><div class="card"><h3 id="quiz-question">In quale anno è nata l’Inter?</h3><div id="quiz-options" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px"><button class="tab" data-answer="1908">1908</button><button class="tab" data-answer="1920">1920</button><button class="tab" data-answer="1899">1899</button></div><p id="quiz-result" aria-live="polite" style="margin:14px 0 0;color:var(--muted)">Seleziona una risposta per scoprire se è corretta.</p><button class="btn primary" id="next-question" style="margin-top:14px;background:var(--blue);color:white">Altra domanda ↻</button></div></section>
-<section class="section" id="partita"><div class="section-head"><div><h2>Prossima partita · Champions League</h2><p class="sub">Terza giornata della fase campionato 2026/27.</p></div></div><div class="match"><div class="team"><span class="team-logo" role="img" aria-label="Stemma stilizzato dell'Inter"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="#050505"/><path d="M50 3 A47 47 0 0 1 50 97 Z" fill="#0637b8"/><circle cx="50" cy="50" r="39" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="50" cy="50" r="34" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M29 30 H39 V57 L50 39 L61 57 V30 H71 V70 H61 L50 52 L39 70 H29 Z" fill="#fff"/><path d="M43 28 L50 38 L57 28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>INTER</div><div class="vs">VS<br><span style="font-size:10px">CHAMPIONS LEAGUE</span></div><div class="team"><span class="team-logo" role="img" aria-label="Stemma stilizzato dello Shakhtar Donetsk"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L89 20 L84 59 Q76 82 50 95 Q24 82 16 59 L11 20 Z" fill="#f58220" stroke="#fff" stroke-width="3"/><path d="M50 13 L81 25 L77 57 Q70 76 50 87 Q30 76 23 57 L19 25 Z" fill="#101010" stroke="#fbb36a" stroke-width="2"/><path d="M31 35 L69 35 M31 45 L69 45 M31 55 L69 55" stroke="#f58220" stroke-width="5" stroke-linecap="round"/><text x="50" y="73" font-size="13" font-weight="900" text-anchor="middle" fill="#fff">FCSD</text></svg></span>SHAKHTAR<br>DONETSK</div></div><p class="matchnote"><strong>Mercoledì 21 ottobre 2026 · ore 21:00</strong><br>San Siro · Milano</p><p class="matchnote"><a href="https://www.inter.it/it/notizie/inter-shakhtar-donetsk-dove-vederla-in-tv-champions-league-2026-27" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Info ufficiali sulla partita ↗</a></p></section>
+<section class="section" id="partita">
+  <div class="section-head">
+    <div>
+      <h2>Partite dell'Inter</h2>
+      <p class="sub">Calendario e risultati aggiornati</p>
+    </div>
+  </div>
+  <div id="inter-matches">
+    Caricamento delle partite...
+  </div>
+</section>
+
+<script>
+async function caricaPartiteInter() {
+  const contenitore = document.getElementById("inter-matches");
+
+  try {
+    const risposta = await fetch("./inter-matches.json");
+    if (!risposta.ok) throw new Error("File non disponibile");
+
+    const dati = await risposta.json();
+
+    if (!dati.matches || dati.matches.length === 0) {
+      contenitore.textContent = "Nessuna partita disponibile.";
+      return;
+    }
+
+    contenitore.innerHTML = dati.matches.map(partita => {
+      const casa = partita.homeTeam.name;
+      const ospite = partita.awayTeam.name;
+      const golCasa = partita.score.fullTime.home;
+      const golOspite = partita.score.fullTime.away;
+      const data = new Date(partita.utcDate).toLocaleString("it-IT", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+
+      let risultato = "Da giocare";
+      if (partita.status === "FINISHED") {
+        risultato = `${golCasa ?? "-"} - ${golOspite ?? "-"}`;
+      }
+
+      return `
+        <div class="match"><section class="section" id="partita"><div class="section-head"><div><h2>Prossima partita · Champions League</h2><p class="sub">Terza giornata della fase campionato 2026/27.</p></div></div><div class="match"><div class="team"><span class="team-logo" role="img" aria-label="Stemma stilizzato dell'Inter"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="#050505"/><path d="M50 3 A47 47 0 0 1 50 97 Z" fill="#0637b8"/><circle cx="50" cy="50" r="39" fill="none" stroke="#fff" stroke-width="2.5"/><circle cx="50" cy="50" r="34" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M29 30 H39 V57 L50 39 L61 57 V30 H71 V70 H61 L50 52 L39 70 H29 Z" fill="#fff"/><path d="M43 28 L50 38 L57 28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>INTER</div><div class="vs">VS<br><span style="font-size:10px">CHAMPIONS LEAGUE</span></div><div class="team"><span class="team-logo" role="img" aria-label="Stemma stilizzato dello Shakhtar Donetsk"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 5 L89 20 L84 59 Q76 82 50 95 Q24 82 16 59 L11 20 Z" fill="#f58220" stroke="#fff" stroke-width="3"/><path d="M50 13 L81 25 L77 57 Q70 76 50 87 Q30 76 23 57 L19 25 Z" fill="#101010" stroke="#fbb36a" stroke-width="2"/><path d="M31 35 L69 35 M31 45 L69 45 M31 55 L69 55" stroke="#f58220" stroke-width="5" stroke-linecap="round"/><text x="50" y="73" font-size="13" font-weight="900" text-anchor="middle" fill="#fff">FCSD</text></svg></span>SHAKHTAR<br>DONETSK</div></div><p class="matchnote"><strong>Mercoledì 21 ottobre 2026 · ore 21:00</strong><br>San Siro · Milano</p><p class="matchnote"><a href="https://www.inter.it/it/notizie/inter-shakhtar-donetsk-dove-vederla-in-tv-champions-league-2026-27" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Info ufficiali sulla partita ↗</a></p></section>
 
 <section class="section" id="evento"><div class="section-head"><div><h2>Un incontro nerazzurro a Napoli ⚫🔵</h2><p class="sub">Una locandina speciale per i tifosi interisti.</p></div></div><div class="poster"><span class="poster-kicker">Evento nerazzurro · Napoli</span><h3>UNA GIORNATA<br><span>DA INTERISTI</span></h3><p class="poster-intro">Un incontro dedicato alla passione per i colori nerazzurri, con due ospiti speciali!</p><div class="poster-guests"><div class="poster-guest"><b>Marco Materazzi</b><span>Campione del mondo e leggenda nerazzurra</span></div><div class="poster-guest"><b>Roberto Scarpini</b><span>Voce storica del mondo Inter</span></div></div><div class="poster-date"><div class="poster-day">21<br>NOVEMBRE</div><div class="poster-place">📍 Città della Scienza<br>Napoli</div></div><p class="poster-note">Orario, accesso e conferma dell’evento da verificare presso gli organizzatori.</p></div></section>
 
