@@ -1,9 +1,9 @@
 name: Aggiorna partite Inter
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,5 +15,23 @@ jobs:
       - name: Scarica il sito
         uses: actions/checkout@v4
 
-      - name: Aggiorna risultati
-        run: echo "Configurazione da completare"
+      - name: Scarica le partite
+        env:
+          API_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
+        run: |
+          set -e
+          curl --fail --silent --show-error \
+            -H "X-Auth-Token: $API_TOKEN" \
+            "https://api.football-data.org/v4/teams/108/matches?limit=20" \
+            -o inter-matches.json
+          python -m json.tool inter-matches.json > /dev/null
+
+      - name: Salva gli aggiornamenti
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add inter-matches.json
+          git diff --cached --quiet || (
+            git commit -m "Aggiorna partite Inter"
+            git push
+          )
