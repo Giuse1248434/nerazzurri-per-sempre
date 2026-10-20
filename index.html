@@ -80,4 +80,52 @@ const quiz=[{q:'In quale anno è nata l’Inter?',opts:['1908','1920','1899'],co
     </a>
   </p>
 </section>     
-         </html>
+<!-- NUOVA SEZIONE: Sondaggio MVP & Bacheca Cori -->
+<section style="background: linear-gradient(135deg, #001e4d 0%, #000000 100%); color: #fff; padding: 40px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h2 style="color: #2b6cb0; font-size: 28px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">⭐ Vota l'MVP Nerazzurro</h2>
+    <p style="color: #cbd5e0; font-size: 15px;">Chi è stato il migliore in campo nell'ultima partita? Esprimi la tua preferenza!</p>
+  </div>
+
+  <!-- Sondaggio Interattivo -->
+  <div id="poll-container" style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 10px; border: 1px solid rgba(43, 108, 176, 0.3);">
+    <div style="display: flex; flex-direction: column; gap: 12px;" id="poll-options">
+      <button onclick="vote('Lautaro Martínez')" style="background: #2b6cb0; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; text-align: left; transition: 0.2s;">🇦🇷 Lautaro Martínez</button>
+      <button onclick="vote('Nicolò Barella')" style="background: #2b6cb0; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; text-align: left; transition: 0.2s;">🇮🇹 Nicolò Barella</button>
+      <button onclick="vote('Hakan Çalhanoğlu')" style="background: #2b6cb0; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; text-align: left; transition: 0.2s;">🇹🇷 Hakan Çalhanoğlu</button>
+      <button onclick="vote('Marcus Thuram')" style="background: #2b6cb0; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; text-align: left; transition: 0.2s;">🇫🇷 Marcus Thuram</button>
+    </div>
+    <p id="poll-result" style="margin-top: 20px; text-align: center; font-weight: bold; color: #63b3ed; font-size: 16px;"></p>
+  </div>
+
+  <!-- Bacheca Cori Interattiva -->
+  <div style="max-width: 600px; margin: 40px auto 0 auto; text-align: center;">
+    <h3 style="color: #2b6cb0; font-size: 22px; margin-bottom: 15px;">🖤💙 I Cori della Curva Nord</h3>
+    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 10px; border-left: 4px solid #2b6cb0;">
+      <p id="coro-text" style="font-style: italic; font-size: 18px; margin-bottom: 15px; color: #edf2f7;">"C'è solo l'Inter... un sogno che continua, di anima e di core..."</p>
+      <button onclick="cambiaCoro()" style="background: #2d3748; color: white; border: 1px solid #4a5568; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 13px;">Cambia Coro 🔄</button>
+    </div>
+  </div>
+</section>
+
+<!-- Script per far funzionare i pulsanti interattivi -->
+<script>
+  function vote(player) {
+    document.getElementById('poll-result').innerText = "✅ Grazie per aver votato! Hai scelto: " + player + ". (Voto registrato!)";
+  }
+
+  const cori = [
+    "\"C'è solo l'Inter... un sogno che continua, di anima e di core...\"",
+    "\"Pazza Inter amala! È una gioia infinita che dura una vita...\"",
+    "\"Per la gente che ama soltanto te... Forza Inter vinci per noi!\"",
+    "\"E la capolista se ne va... oh oh oh oh!\""
+  ];
+  let coroIndex = 0;
+
+  function cambiaCoro() {
+    coroIndex = (coroIndex + 1) % cori.length;
+    document.getElementById('coro-text').innerText = cori[coroIndex];
+  }
+</script>
+   
+</html>
