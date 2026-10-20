@@ -417,5 +417,98 @@ const quiz=[{q:'In quale anno è nata l’Inter?',opts:['1908','1920','1899'],co
 
   </div>
 </section>
+<!-- NUMERI DI MAGLIA RITIRATI -->
+<section style="background: linear-gradient(135deg, #090d16, #001e4d); color: white; padding: 35px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; text-align: center;">
+  <h2 style="color: #60a5fa; font-size: 24px; margin-bottom: 8px;">👕 Numeri Ritirati nella Storia</h2>
+  <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 25px;">Maglie entrate nel mito e ritirate per sempre per onorare due leggende</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; max-width: 650px; margin: 0 auto;">
+    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 40px; font-weight: bold; color: #facc15; text-shadow: 2px 2px #000;">#3</div>
+      <strong style="color: #60a5fa; font-size: 18px; display: block; margin-top: 5px;">Giacinto Facchetti</strong>
+      <p style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Simbolo di classe, lealtà e stile nerazzurro dentro e fuori dal campo.</p>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 40px; font-weight: bold; color: #facc15; text-shadow: 2px 2px #000;">#4</div>
+      <strong style="color: #60a5fa; font-size: 18px; display: block; margin-top: 5px;">Javier Zanetti</strong>
+      <p style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Il Capitano di mille battaglie e del Triplete, recordman di presenze.</p>
+    </div>
+  </div>
+</section>
+<!-- STORIA DEL BISCIONE -->
+<section style="background: #0f172a; color: white; padding: 30px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; border-left: 4px solid #3b82f6;">
+  <h3 style="color: #60a5fa; font-size: 22px; text-align: center; margin-bottom: 15px;">🐉 Perché il Biscione?</h3>
+  
+  <div style="max-width: 650px; margin: 0 auto; line-height: 1.6; color: #cbd5e1; font-size: 14px;">
+    <p style="margin-bottom: 10px;">
+      Il <strong>Biscione</strong> è lo storico stemma della famiglia Visconti, che dominò Milano nel Medioevo e nel Rinascimento. 
+    </p>
+    <p style="margin: 0;">
+      Negli anni '20 fu scelto dal disegnatore e umorista <em>Guerin Meschino</em> come simbolo per rappresentare l'Inter nelle vignette sportive. Da allora, il serpente nerazzurro è diventato il simbolo di forza, eleganza e milanesità per tutti i tifosi interisti.
+    </p>
+  </div>
+</section>
+<!-- PRONOSTICO TIFOSO -->
+<section style="background: #001329; color: white; padding: 30px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; text-align: center;">
+  <h3 style="color: #60a5fa; font-size: 22px; margin-bottom: 10px;">🔮 Fai il tuo Pronostico!</h3>
+  <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">Come finirà la prossima gara dell'Inter?</p>
+
+  <div style="max-width: 450px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(59, 130, 246, 0.3);">
+    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px;">
+      <span style="font-weight: bold; color: #60a5fa;">INTER</span>
+      <input type="number" id="scoreInter" min="0" max="9" value="2" style="width: 50px; padding: 8px; text-align: center; font-size: 18px; font-weight: bold; border-radius: 5px; border: none;">
+      <span>-</span>
+      <input type="number" id="scoreOpponent" min="0" max="9" value="0" style="width: 50px; padding: 8px; text-align: center; font-size: 18px; font-weight: bold; border-radius: 5px; border: none;">
+      <span style="font-weight: bold; color: #94a3b8;">AVVERSARIO</span>
+    </div>
+    
+    <button onclick="checkPredict()" style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Conferma Pronostico ⚽</button>
+    
+    <p id="predictResult" style="margin-top: 15px; font-weight: bold; font-size: 15px; color: #60a5fa;"></p>
+  </div>
+</section>
+
+<script>
+  function checkPredict() {
+    const inter = parseInt(document.getElementById('scoreInter').value);
+    const opp = parseInt(document.getElementById('scoreOpponent').value);
+    const res = document.getElementById('predictResult');
+
+    if (isNaN(inter) || isNaN(opp)) {
+      res.innerText = "⚠️ Inserisci un punteggio valido!";
+      return;
+    }
+
+    if (inter > opp) {
+      res.innerText = "🔥 Pronostico da vero interista! Speriamo in una vittoria per " + inter + " a " + opp + "! Forza Inter! 🖤💙";
+    } else if (inter === opp) {
+      res.innerText = "⚖️ Pronostico cauto. Servirà massimo impegno per portarla a casa!";
+    } else {
+      res.innerText = "😱 Ehi, scaramanzia a parte... qui si tifa solo per la vittoria nerazzurra! 😉";
+    }
+  }
+</script>
+<!-- HALL OF FAME DERBY -->
+<section style="background: #0f172a; color: white; padding: 30px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif;">
+  <h3 style="color: #60a5fa; font-size: 22px; text-align: center; margin-bottom: 20px;">🔥 Derby della Madonnina Memorabili</h3>
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 650px; margin: 0 auto;">
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #facc15;">
+      <strong style="color: #facc15; font-size: 16px;">Milan 0 - 4 Inter (2009)</strong>
+      <p style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">Dominio totale e show dell'Inter di Mourinho nell'anno del Triplete (Thiago Motta, Milito, Maicon, Stankovic).</p>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #60a5fa;">
+      <strong style="color: #60a5fa; font-size: 16px;">Milan 0 - 2 Inter (2023)</strong>
+      <p style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">EuroDerby di Champions League: partenza sprint con i gol di Džeko e Mkhitaryan nei primi 11 minuti.</p>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border-left: 4px solid #facc15;">
+      <strong style="color: #facc15; font-size: 16px;">Milan 1 - 2 Inter (2024)</strong>
+      <p style="font-size: 13px; color: #cbd5e1; margin-top: 4px;">Il derby della Seconda Stella: vittoria decisiva in casa dei rivali per conquistare il 20° Scudetto ⭐⭐.</p>
+    </div>
+  </div>
+</section>
  
 </html>
