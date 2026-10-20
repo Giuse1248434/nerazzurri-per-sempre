@@ -258,5 +258,105 @@ const quiz=[{q:'In quale anno è nata l’Inter?',opts:['1908','1920','1899'],co
     document.getElementById('quiz-result').innerText = messaggio;
   }
 </script>
+<!-- ALLENATORI STORICI -->
+<section style="background: #0f172a; color: white; padding: 30px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; text-align: center;">
+  <h3 style="color: #3b82f6; font-size: 22px; margin-bottom: 20px;">👔 I Grandi Allenatori</h3>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 700px; margin: 0 auto;">
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+      <div style="font-size: 30px;">🧢</div>
+      <strong style="color: #60a5fa; display: block; margin: 5px 0;">Helenio Herrera</strong>
+      <small style="color: #cbd5e1;">2 Coppe dei Campioni, 3 Scudetti (La Grande Inter)</small>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+      <div style="font-size: 30px;">👔</div>
+      <strong style="color: #60a5fa; display: block; margin: 5px 0;">José Mourinho</strong>
+      <small style="color: #cbd5e1;">Lo storico Triplete 2009/10</small>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+      <div style="font-size: 30px;">📋</div>
+      <strong style="color: #60a5fa; display: block; margin: 5px 0;">Simone Inzaghi</strong>
+      <small style="color: #cbd5e1;">Scudetto della 2ª Stella e trofei nazionali</small>
+    </div>
+  </div>
+</section>
+<!-- CAMBIO TEMA INTERATTIVO -->
+<section style="text-align: center; margin: 30px 0; font-family: sans-serif;">
+  <button onclick="toggleTheme()" id="themeBtn" style="background: #1e293b; color: #60a5fa; border: 1px solid #3b82f6; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+    🌙 Cambia Modalità Visiva (Chiaro/Scuro)
+  </button>
+</section>
+
+<script>
+  let isDark = true;
+  function toggleTheme() {
+    isDark = !isDark;
+    if(!isDark) {
+      document.body.style.backgroundColor = "#f8fafc";
+      document.body.style.color = "#0f172a";
+    } else {
+      document.body.style.backgroundColor = "";
+      document.body.style.color = "";
+    }
+  }
+</script>
+<!-- CALENDARIO BIG MATCH -->
+<section style="background: linear-gradient(135deg, #0f172a, #001e4d); color: white; padding: 35px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif;">
+  <h3 style="color: #60a5fa; font-size: 22px; text-align: center; margin-bottom: 20px;">🗓️ I Prossimi Big Match</h3>
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px; margin: 0 auto;">
+    <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3b82f6;">
+      <div>
+        <strong style="color: #f1f5f9;">Inter vs Shakhtar Donetsk</strong><br>
+        <small style="color: #94a3b8;">Champions League · San Siro</small>
+      </div>
+      <span style="font-size: 13px; font-weight: bold; color: #60a5fa;">21 Ottobre</span>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3b82f6;">
+      <div>
+        <strong style="color: #f1f5f9;">Inter vs Juventus</strong><br>
+        <small style="color: #94a3b8;">Serie A · Derbi d'Italia</small>
+      </div>
+      <span style="font-size: 13px; font-weight: bold; color: #60a5fa;">Prossimo Turno</span>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #3b82f6;">
+      <div>
+        <strong style="color: #f1f5f9;">Milan vs Inter</strong><br>
+        <small style="color: #94a3b8;">Serie A · Derby della Madonnina</small>
+      </div>
+      <span style="font-size: 13px; font-weight: bold; color: #60a5fa;">In arrivo</span>
+    </div>
+  </div>
+</section>
+<!-- STATISTICHE DELLA STAGIONE -->
+<section style="background: #0b1329; color: white; padding: 35px 20px; border-radius: 12px; margin: 30px 0; font-family: sans-serif; text-align: center;">
+  <h2 style="color: #60a5fa; font-size: 24px; margin-bottom: 20px;">📊 Le Statistiche della Stagione</h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; max-width: 700px; margin: 0 auto;">
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 26px; font-weight: bold; color: #60a5fa;">⚽ 2.3</div>
+      <div style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Gol segnati / partita</div>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 26px; font-weight: bold; color: #60a5fa;">🧤 65%</div>
+      <div style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Clean Sheet</div>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 26px; font-weight: bold; color: #60a5fa;">📐 62%</div>
+      <div style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Possesso palla medio</div>
+    </div>
+
+    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3);">
+      <div style="font-size: 26px; font-weight: bold; color: #60a5fa;">🎯 88%</div>
+      <div style="font-size: 12px; color: #cbd5e1; margin-top: 5px;">Precisione passaggi</div>
+    </div>
+  </div>
+</section>
   
 </html>
